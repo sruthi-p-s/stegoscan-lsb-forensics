@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DFIR Image LSB Forensic Workbench</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🛡️ StegoScan: LSB Forensic Workbench</h1>
+      <p>Digital Image Anti-Forensics & Bit-Plane Inspection Engine</p>
+    </header>
+
+    <section class="card upload-section">
+      <label for="imageInput" class="upload-label">Select Evidence Image (.png, .bmp)</label>
+      <input type="file" id="imageInput" accept="image/png, image/bmp">
+    </section>
+
+    <section class="card inject-section">
+      <h3>🛠️ Test Artifact Generator (Create Stego Evidence)</h3>
+      <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <input type="text" id="secretInput" placeholder="Enter secret message to hide (e.g., FLAG{DFIR_EXFIL_2026})" style="flex: 1; padding: 8px; background: #010409; border: 1px solid #30363d; color: #f0f6fc; border-radius: 4px;">
+        <button id="injectBtn" style="padding: 8px 16px; background: #238636; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">Inject & Download .PNG</button>
+      </div>
+    </section>
+    
+    <div class="workspace">
+      <div class="panel">
+        <h3>Original Evidence</h3>
+        <canvas id="originalCanvas"></canvas>
+      </div>
+
+      <div class="panel">
+        <h3>LSB Bit-Plane Telemetry</h3>
+        <canvas id="analysisCanvas"></canvas>
+      </div>
+    </div>
+
+    <section class="card output-section">
+      <h3>Extracted LSB Artifacts (Text Payload)</h3>
+      <textarea id="extractedText" placeholder="Extracted hidden data will appear here..." readonly rows="6"></textarea>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
