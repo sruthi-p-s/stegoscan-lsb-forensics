@@ -3,29 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DFIR Image LSB Forensic Workbench</title>
+  <title>StegoScan Pro: Forensic LSB Workbench</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>🛡️ StegoScan: LSB Forensic Workbench</h1>
-      <p>Digital Image Anti-Forensics & Bit-Plane Inspection Engine</p>
+      <h1>🛡️ StegoScan Pro: Forensic LSB Workbench</h1>
+      <p>Digital Image Anti-Forensics, Bit-Plane Navigation & Artifact Extraction Engine</p>
     </header>
 
+    <!-- STEP 1: UPLOAD EVIDENCE -->
     <section class="card upload-section">
-      <label for="imageInput" class="upload-label">Select Evidence Image (.png, .bmp)</label>
+      <label for="imageInput" class="section-label">Select Evidence Image (.png, .bmp)</label>
       <input type="file" id="imageInput" accept="image/png, image/bmp">
     </section>
 
+    <!-- STEP 2: TEST CARRIER GENERATOR (GROUND TRUTH ARTIFACT CREATION) -->
     <section class="card inject-section">
       <h3>🛠️ Test Artifact Generator (Create Stego Evidence)</h3>
-      <div style="display: flex; gap: 10px; margin-top: 10px;">
-        <input type="text" id="secretInput" placeholder="Enter secret message to hide (e.g., FLAG{DFIR_EXFIL_2026})" style="flex: 1; padding: 8px; background: #010409; border: 1px solid #30363d; color: #f0f6fc; border-radius: 4px;">
-        <button id="injectBtn" style="padding: 8px 16px; background: #238636; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">Inject & Download .PNG</button>
+      <p class="subtext">Embeds a known payload into the carrier image to verify detection accuracy.</p>
+      <div class="row">
+        <input type="text" id="secretInput" placeholder="Enter test string (e.g., EXFIL_OPERATION_ALPHA_2026)">
+        <button id="injectBtn" class="btn btn-green">Inject & Export Evidence .PNG</button>
       </div>
     </section>
-    
+
+    <!-- STEP 3: BIT-PLANE CONTROLLER -->
+    <section class="card controller-section">
+      <h3>🎛️ Bit-Plane Forensic Inspector</h3>
+      <div class="controller-row">
+        <label>
+          Channel:
+          <select id="channelSelect">
+            <option value="0">Red (R)</option>
+            <option value="1">Green (G)</option>
+            <option value="2">Blue (B)</option>
+          </select>
+        </label>
+
+        <label>
+          Bit Plane:
+          <select id="bitSelect">
+            <option value="0">Bit 0 (LSB - High Sensitivity Noise)</option>
+            <option value="1">Bit 1</option>
+            <option value="2">Bit 2</option>
+            <option value="3">Bit 3</option>
+            <option value="4">Bit 4</option>
+            <option value="5">Bit 5</option>
+            <option value="6">Bit 6</option>
+            <option value="7">Bit 7 (MSB - Structural Luminance)</option>
+          </select>
+        </label>
+
+        <button id="renderPlaneBtn" class="btn btn-blue">Inspect Selected Plane</button>
+      </div>
+    </section>
+
+    <!-- VISUAL FORENSIC WORKBENCH -->
     <div class="workspace">
       <div class="panel">
         <h3>Original Evidence</h3>
@@ -33,14 +68,15 @@
       </div>
 
       <div class="panel">
-        <h3>LSB Bit-Plane Telemetry</h3>
+        <h3 id="telemetryTitle">Bit-Plane Telemetry (Red - Bit 0)</h3>
         <canvas id="analysisCanvas"></canvas>
       </div>
     </div>
 
+    <!-- FORENSIC REPORT TERMINAL -->
     <section class="card output-section">
-      <h3>Extracted LSB Artifacts (Text Payload)</h3>
-      <textarea id="extractedText" placeholder="Extracted hidden data will appear here..." readonly rows="6"></textarea>
+      <h3>🔍 Automated Forensic Telemetry & File Signature Report</h3>
+      <textarea id="extractedText" readonly rows="8" placeholder="Telemetry analysis will execute automatically upon ingestion..."></textarea>
     </section>
   </div>
 

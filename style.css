@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1040px;
   margin: 0 auto;
 }
 
@@ -38,24 +38,87 @@ header p {
   border: 1px solid #30363d;
   border-radius: 6px;
   padding: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
-.upload-section {
+.section-label, .card h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f0f6fc;
+}
+
+.subtext {
+  font-size: 0.8rem;
+  color: #8b949e;
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+
+.row {
   display: flex;
-  flex-direction: column;
   gap: 10px;
 }
 
-.upload-label {
-  font-size: 0.9rem;
-  font-weight: 600;
+.controller-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 8px 12px;
+  background-color: #010409;
+  border: 1px solid #30363d;
   color: #f0f6fc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+input[type="text"]:focus, select:focus {
+  outline: none;
+  border-color: #58a6ff;
+}
+
+select {
+  background-color: #010409;
+  color: #f0f6fc;
+  border: 1px solid #30363d;
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin-left: 6px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn-green {
+  background-color: #238636;
+  color: #ffffff;
+}
+
+.btn-blue {
+  background-color: #1f6feb;
+  color: #ffffff;
 }
 
 input[type="file"] {
   color: #8b949e;
   font-size: 0.85rem;
+  margin-top: 8px;
 }
 
 .workspace {
@@ -72,7 +135,7 @@ input[type="file"] {
   padding: 16px;
 }
 
-.panel h3, .output-section h3 {
+.panel h3 {
   font-size: 0.95rem;
   margin-bottom: 12px;
   color: #58a6ff;
@@ -80,7 +143,7 @@ input[type="file"] {
 
 canvas {
   width: 100%;
-  max-height: 320px;
+  max-height: 360px;
   object-fit: contain;
   background-color: #010409;
   border: 1px dashed #30363d;
@@ -94,10 +157,12 @@ textarea {
   border: 1px solid #30363d;
   border-radius: 4px;
   color: #3fb950;
-  font-family: monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: 0.85rem;
-  padding: 10px;
+  padding: 12px;
   resize: vertical;
+  line-height: 1.4;
+  margin-top: 10px;
 }
 
 textarea:focus {
